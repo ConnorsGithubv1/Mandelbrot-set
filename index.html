@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mandelbrot set</title>
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+  </head>
+  <body>
+
+    <canvas id="myCanvas"></canvas>
+    
+    <script>
+      var screenWidth = window.innerWidth || document.documentElement.clientWidth || document.bodu.clientWidth;
+      var screenHeight = window.innerHeight || document.documentElement.clientHeight || document.bodu.clientHeight;
+
+      var canvas = document.getElementById("myCanvas");
+
+      var newWidth = screenWidth;
+      var newHeight = screenHeight;
+
+      //function to update canvas
+      function updateCanvasSize(){
+      canvas.width = newWidth;
+      canvas.height = newHeight;
+      }
+
+      //function to update console
+      function updateConsole(){
+      console.log('cwidth:' + newWidth);
+      console.log('cheight:' + newHeight);
+      }
+
+      
+      canvas.style.backgroundColor = "#ff0000";
+
+      canvas.getContext("2d");
+
+      updateCanvasSize();
+      updateConsole();
+
+      window.addEventListener('resize', updateCanvasSize);
+      window.addEventListener('resize', updateConsole);
+
+      
+    </script>
+    
+  </body>
+</html>
