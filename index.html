@@ -11,39 +11,25 @@
     <canvas id="myCanvas"></canvas>
     
     <script>
-      var screenWidth = window.innerWidth || document.documentElement.clientWidth || document.bodu.clientWidth;
-      var screenHeight = window.innerHeight || document.documentElement.clientHeight || document.bodu.clientHeight;
-
       var canvas = document.getElementById("myCanvas");
+      var context = canvas.getContext("2d");
 
-      var newWidth = screenWidth;
-      var newHeight = screenHeight;
+      function updateCanvasSize() {
+        var screenWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+        var screenHeight = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight;
 
-      //function to update canvas
-      function updateCanvasSize(){
-      canvas.width = newWidth;
-      canvas.height = newHeight;
+        // Clear the canvas and set its size
+        canvas.width = screenWidth;
+        canvas.height = screenHeight;
+
+        // Fill the canvas with a background color
+        context.fillStyle = "#ff0000";
+        context.fillRect(0, 0, screenWidth, screenHeight);
+
+        requestAnimationFrame(updateCanvasSize); // Recursively call the function
       }
-
-      //function to update console
-      function updateConsole(){
-      console.log('cwidth:' + newWidth);
-      console.log('cheight:' + newHeight);
-      }
-
-      
-      canvas.style.backgroundColor = "#ff0000";
-
-      canvas.getContext("2d");
 
       updateCanvasSize();
-      updateConsole();
-
-      window.addEventListener('resize', updateCanvasSize);
-      window.addEventListener('resize', updateConsole);
-
-      
     </script>
-    
   </body>
 </html>
