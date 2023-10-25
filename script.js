@@ -21,9 +21,9 @@
   const app = initializeApp(firebaseConfig);
   const analytics = getAnalytics(app);
 
-  // Get references to form elements
+// Get references to form elements
 const loginForm = document.getElementById("loginForm");
-const emailInput = document.getElementById("email");
+const usernameInput = document.getElementById("username");
 const passwordInput = document.getElementById("password");
 const message = document.getElementById("message");
 
@@ -31,15 +31,15 @@ const message = document.getElementById("message");
 loginForm.addEventListener("submit", (e) => {
     e.preventDefault(); // Prevent the default form submission behavior
 
-    const email = emailInput.value;
+    const username = usernameInput.value;
     const password = passwordInput.value;
 
     // Sign in with Firebase Authentication
-    firebase.auth().signInWithEmailAndPassword(email, password)
+    firebase.auth().signInWithEmailAndPassword(username, password)
         .then((userCredential) => {
             // User successfully signed in
             const user = userCredential.user;
-            message.textContent = `Logged in as ${user.email}`;
+            message.textContent = `Logged in as ${user.displayName || user.email}`;
         })
         .catch((error) => {
             // Handle errors
