@@ -5,6 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Mandelbrot set</title>
     <link rel="stylesheet" type="text/css" href="main.css">
+    <script type="module">
+      // Import the functions you need from the SDKs you need
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-app.js";
+      import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-analytics.js";
+      // TODO: Add SDKs for Firebase products that you want to use
+      // https://firebase.google.com/docs/web/setup#available-libraries
+    
+      // Your web app's Firebase configuration
+      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+      const firebaseConfig = {
+        apiKey: "AIzaSyCif0ajYLXlGDXyIwAX3x7zVYsimHC_-wo",
+        authDomain: "mandelbrot-set-226c7.firebaseapp.com",
+        projectId: "mandelbrot-set-226c7",
+        storageBucket: "mandelbrot-set-226c7.appspot.com",
+        messagingSenderId: "688049885530",
+        appId: "1:688049885530:web:25b7ee306046caf7f6e363",
+        measurementId: "G-KXDBH5LTMR"
+      };
+    
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const analytics = getAnalytics(app);
+    </script>
   </head>
   <body>
 
@@ -31,5 +54,10 @@
 
       updateCanvasSize();
     </script>
+
+        <!-- Add this to your HTML file -->
+      <script src="https://www.gstatic.com/firebasejs/9.1.2/firebase-app.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/9.1.2/firebase-auth.js"></script>
+
   </body>
 </html>
