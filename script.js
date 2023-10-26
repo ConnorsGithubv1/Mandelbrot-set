@@ -2,6 +2,7 @@
   // Import the functions you need from the SDKs you need
   import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-app.js";
   import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-analytics.js";
+  import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-auth.js";
   // TODO: Add SDKs for Firebase products that you want to use
   // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -17,9 +18,12 @@
     measurementId: "G-KXDBH5LTMR"
   };
 
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
-  const analytics = getAnalytics(app);
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+
+// Get a reference to the Firebase Authentication module
+const auth = getAuth();
 
 // Get references to form elements
 const loginForm = document.getElementById("loginForm");
@@ -35,7 +39,7 @@ loginForm.addEventListener("submit", (e) => {
     const password = passwordInput.value;
 
     // Sign in with Firebase Authentication
-    firebase.auth().signInWithEmailAndPassword(email, password)
+    signInWithEmailAndPassword(auth, email, password)
         .then((userCredential) => {
             // User successfully signed in
             const user = userCredential.user;
@@ -46,4 +50,3 @@ loginForm.addEventListener("submit", (e) => {
             message.textContent = `Error: ${error.message}`;
         });
 });
-
